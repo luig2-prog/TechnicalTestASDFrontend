@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prod": "npm run ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer --base-href=/frontend/proGrado/"
+    "prod": "npm run ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer --base-href=/"
   },
   "private": true,
   "dependencies": {
