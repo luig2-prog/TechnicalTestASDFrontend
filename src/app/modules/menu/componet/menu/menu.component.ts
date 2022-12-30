@@ -54,26 +54,15 @@ export class MenuComponent implements OnInit{
     }
   }
 
-//   ngOnDestroy(): void {
-//     this.mobileQuery.removeEventListener("change", this._mobileQueryListener);
-//     this.autoLogoutSubscription.unsubscribe();
-// }
-
   ngAfterViewInit(): void {
       this.changeDetectorRef.detectChanges();
   }
 
   getPermitsAlls() {
-    let arrayData: any[] = [];
     const user = this.authService.getCurrentUser();
     let token = null;
     if (user) {
       token = user.token;
-    }
-    if (token != null) {
-        let objectTokenJwt = jwt_decode(token);
-        let objectUser: any = JSON.parse(objectTokenJwt['sub']);
-
     }
   }
   

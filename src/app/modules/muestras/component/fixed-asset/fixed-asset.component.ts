@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SweetAlert } from 'src/app/utils/sweetAlert.service';
 import Swal from 'sweetalert2';
-import { AddEditMuestraComponent } from '../add-edit-muestra/add-edit-muestra.component';
+import { AddEditMuestraComponent } from '../add-edit-muestra/add-edit-fixed-asset.component';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from '../../../../services/auth/auth.service';
@@ -12,11 +12,11 @@ import { FixedAssetService } from 'src/app/services/fixed-asset/fixed-asset.serv
 import { FixedAsset } from 'src/app/interface/FixedAsset';
 
 @Component({
-  selector: 'app-muestras-sin-analisis',
-  templateUrl: './muestras.component.html',
-  styleUrls: ['./muestras.component.scss']
+  selector: 'app-fixed-asset',
+  templateUrl: './fixed-asset.component.html',
+  styleUrls: ['./fixed-asset.component.scss']
 })
-export class MuestrasComponent implements OnInit {
+export class FixedAssetComponent implements OnInit {
 
   fixedAssets: FixedAsset[] = [];
   eliminando: boolean = false;

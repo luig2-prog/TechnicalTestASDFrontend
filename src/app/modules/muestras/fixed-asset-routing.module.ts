@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from '../menu/componet/menu/menu.component';
-import { MuestrasComponent } from './component/muestras/muestras.component';
+import { FixedAssetComponent } from './component/fixed-asset/fixed-asset.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MuestrasComponent,
+        component: FixedAssetComponent,
       }
     ]
   }

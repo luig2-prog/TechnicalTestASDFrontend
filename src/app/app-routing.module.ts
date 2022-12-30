@@ -20,7 +20,7 @@ const routes: Routes = [
     },
     { 
       path: 'muestras',
-      loadChildren: () => import('./../app/modules/muestras/muestra.module').then(m => m.MuestraModule),
+      loadChildren: () => import('./modules/muestras/fixed-asset.module').then(m => m.FixedAssetModule),
       canActivate: [AuthActiveGuard]
     },
     {

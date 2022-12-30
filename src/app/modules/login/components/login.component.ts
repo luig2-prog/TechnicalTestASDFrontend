@@ -80,9 +80,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.sweetAlert.warning(response.message, "Login");
         }
-      },(response) => {
-        console.log("🚀 ~ file: add-edit.component.ts:121 ~ AddEditComponent ~ this.utilService.confirmacion ~ response", response)
-
+      }, response => {
         this.isLogged=false;
         this.isLoginFail=true;
         Swal.fire('ERROR', response.error.message, 'warning');
@@ -91,7 +89,6 @@ export class LoginComponent implements OnInit {
   }
 
   forgoutPassword() {
-    console.log('ok')
     this.forgoutPasswordshow = true;
     this.title = 'Recuperar contraseña';
   }

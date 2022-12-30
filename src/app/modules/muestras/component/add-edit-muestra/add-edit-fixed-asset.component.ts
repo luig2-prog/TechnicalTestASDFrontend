@@ -13,8 +13,8 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-edit-muestra',
-  templateUrl: './add-edit-muestra.component.html',
-  styleUrls: ['./add-edit-muestra.component.scss']
+  templateUrl: './add-edit-fixed-asset.component.html',
+  styleUrls: ['./add-edit-fixed-asset.component.scss']
 })
 export class AddEditMuestraComponent implements OnInit {
 

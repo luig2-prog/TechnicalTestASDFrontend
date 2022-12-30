@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FixedAssetComponent } from './fixed-asset.component';
 
-import { AddEditMuestraComponent } from './add-edit-muestra.component';
-
-describe('AddEditMuestraComponent', () => {
-  let component: AddEditMuestraComponent;
-  let fixture: ComponentFixture<AddEditMuestraComponent>;
+describe('MuestrasSinAnalisisComponent', () => {
+  let component: FixedAssetComponent;
+  let fixture: ComponentFixture<FixedAssetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddEditMuestraComponent ]
+      declarations: [ FixedAssetComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditMuestraComponent);
+    fixture = TestBed.createComponent(FixedAssetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
