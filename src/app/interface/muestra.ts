@@ -1,0 +1,24 @@
+export interface Muestra{
+    cdunimuestra?:string;
+    dtfechacreacion?:Date;
+    dtfechamodificacion?:Date;
+    dtfechatoma?:Date;
+    dscodmuestra?:number;
+    dscliente?:string;
+    cdtipomuestra?:string;
+    dstiporecipiente?:string;
+    dspuntorecoleccion?:string;
+    dspreservacion?:string;
+    dstomadapor?:string;
+    dsubicacion?:string;
+    nmvolumen?:number;
+    dsestado?:string,
+    dstipomuestra?:number;
+    cdtiporecipiente?:number;
+    cdpreservacion?:number;
+    cdtomadapor?:number;
+    fedesdetoma?:Date;
+    fehastatoma?:Date;
+    dsparametrosanalisis?:string;
+    dsestante?:string;
+}

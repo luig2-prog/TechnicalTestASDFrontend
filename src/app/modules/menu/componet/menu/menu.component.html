@@ -1,0 +1,65 @@
+<div class="toolbar-container">
+    <div>
+        <mat-toolbar class="header-toolbar">
+            <button mat-icon-button matTooltip="Menú" matTooltipPosition="right" style="left: 1%;"
+                (click)="snav.toggle()">
+                <mat-icon class="icon">menu</mat-icon>
+            </button>
+            <h2 style="color: white;">{{title}}</h2>
+            <button mat-icon-button matTooltip="Salir" matTooltipPosition="left" style="right: 1%; padding-left: 5px;"
+                (click)="logout()">
+                <mat-icon class="icon">logout</mat-icon>
+            </button>
+        </mat-toolbar>
+    </div>
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]='mobileQuery.matches ? 56 : 0'>
+        <mat-sidenav #snav [mode]='mobileQuery.matches ? "over" : "side"' [fixedInViewport]='mobileQuery.matches'
+            fixedTopGap="56" class="sidenav">
+            <mat-nav-list class="nav-list">
+                <div>
+                    <img src="./../../../../../assets/image/asd_logo.png" alt="" class="menu-logo">
+                </div>
+                <div class="items_container">
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/home"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>home</mat-icon>&nbsp;HOME
+                    </a>
+
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/usuarios"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>supervisor_account</mat-icon>&nbsp;USUARIOS
+                    </a>
+
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/maestras"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>menu_book</mat-icon>&nbsp;PARÁMETROS
+                    </a>
+
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/reactivos"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>science</mat-icon>&nbsp;REACTIVOS
+                    </a>
+
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/cliente"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>work</mat-icon>&nbsp;CLIENTES
+                    </a>
+
+                    <a (click)="snav.toggle()" class="menu-item" mat-list-item routerLink="/muestras"
+                        routerLinkActive='active' id="link-us-menu">
+                        <mat-icon>biotech</mat-icon>&nbsp;ACTIVOS FIJOS
+                    </a>
+
+                </div>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="content">
+            <br><br><br>
+            <block-ui>
+                <router-outlet></router-outlet>
+            </block-ui>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    <footer>
+    </footer>
+</div>

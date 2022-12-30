@@ -1,0 +1,25 @@
+#caja {
+    display: flex;
+    flex-direction: column;
+  }
+  .padre {
+    display: flex;
+    justify-content: center;
+  }
+  h2 {
+    text-align: center;
+    margin-left: 25px;
+  }
+  
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  #formulario{
+    width: 300px;
+  }
+  .close{
+    float: right;
+  }

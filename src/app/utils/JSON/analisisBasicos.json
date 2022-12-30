@@ -1,0 +1,42 @@
+{
+    "ph": {
+        "id": 1,
+        "titulo": "Ph",
+        "procedimiento": "PLA-006",
+        "metodo": "SM 4500-H+ B",
+        "unidades": "pH",
+        "tipo":"ph"
+    },
+    "conducitivad": {
+        "id": 2,
+        "titulo": "CONDUCTIVIDAD ELÉCTRICA",
+        "procedimiento": "PLA-007",
+        "metodo": "SM 2510 B",
+        "unidades": "µs/cm",
+        "tipo":"conductividad"
+    },
+    "colorReal": {
+        "id": 3,
+        "titulo": "COLOR REAL",
+        "procedimiento": "PLA-029",
+        "metodo": "SM 2120 C",
+        "unidades": "UPC",
+        "tipo":"colorreal"
+    },
+    "colorAparente": {
+        "id": 4,
+        "titulo": "COLOR APARENTE",
+        "procedimiento": "PLA-029",
+        "metodo": "SM 2120 C",
+        "unidades": "UPC",
+        "tipo":"coloraparente"
+    },
+    "turbidez": {
+        "id": 5,
+        "titulo": "TURBIDEZ",
+        "procedimiento": "PLA-030",
+        "metodo": "SM 2130 B",
+        "unidades": "NTU",
+        "tipo":"turbidez"
+    }
+}

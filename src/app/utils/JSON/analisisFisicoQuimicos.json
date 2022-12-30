@@ -1,0 +1,10 @@
+{
+    "alcalinidaTotal": {
+        "id": 1,
+        "titulo": "ALCALINIDAD TOTAL",
+        "procedimiento": "PLA-013",
+        "metodo": "SM 2320 B",
+        "unidades": "mg/L",
+        "tipo":"alcalinidad"
+    }
+}

@@ -1,0 +1,90 @@
+.custom-dialog-container .mat-dialog-container{
+    width: 40vw;
+}
+.close{
+    float: right;
+    cursor: pointer;
+}
+
+h2{
+   text-align: center;
+}
+.row{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.mat-form-field{
+    // width: 48%;
+}
+.full-width{
+    width: 100%;
+}
+.continue, .cancel{
+    width: 100%;
+}
+.buttons button{
+   width:40%;
+}
+.with-80 {
+    width:  90%;
+}
+.mat-mini-fab.mat-accent {
+     background-color: #0012BC;
+}
+.mat-mini-fab.mat-accent:hover{
+    background-color: #114a1d;
+}
+.column3{
+    // width: 30%;
+}
+.buttons{
+    width: 40%;
+    justify-content: space-between;
+    display: flex;
+    margin: auto;
+    margin-top: 2%;
+}
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .custom-dialog-container .mat-dialog-container{
+        width: 110vw;
+    }
+    header{
+        align-items: center;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        width: 90%;
+    }
+    .mat-form-field{
+        width: 48%;
+    }
+    .full-width{
+        width: 100%;
+    }
+    .continue, .cancel{
+        width: 100%;
+    }
+    .continue{
+        background-color: #0012BC;
+        color: white;
+    }
+    .buttons{
+        width: 70%;
+        justify-content: space-between;
+        display: flex;
+        margin: auto;
+        margin-top: 2%;
+    }
+}

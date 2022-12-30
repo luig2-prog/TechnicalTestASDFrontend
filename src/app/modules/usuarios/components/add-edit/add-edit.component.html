@@ -1,0 +1,114 @@
+<div id="padre">
+  <div>
+    <button class="close" mat-dialog-close mat-icon-button matTooltip="Cerrar" matTooltipPosition="left">
+      <mat-icon>close</mat-icon>
+    </button>
+    <h2>Usuario</h2>
+  </div>
+
+
+  <div class="padre">
+    <form class="example-container" [formGroup]="formUsuario" (ngSubmit)="saveUpdate()">
+
+      <mat-dialog-content class="mat-typography">
+
+        <div class="example-container">
+          <br>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" formControlName="firstName" maxlength="20" required />
+            <mat-error *ngIf="getValue('firstName')?.errors?.required">Escriba un nombre</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input matInput placeholder="Apellidos" formControlName="lastName" maxlength="50" required />
+            <mat-error *ngIf="getValue('lastName')?.errors?.required">Escriba los apellidos</mat-error>
+          </mat-form-field>
+        </div>
+
+        <br>
+
+        <div id="container">
+          <mat-form-field>
+            <mat-label>Tipo de documento</mat-label>
+            <mat-select formControlName="documentType" required>
+              <mat-option value="CC">CC</mat-option>
+              <mat-option value="CE">CE</mat-option>
+              <mat-option value="TI">TI</mat-option>
+              <mat-option value="CC">CC</mat-option>
+            </mat-select>
+            <mat-error *ngIf="getValue('documentType')?.errors?.required">Selección requerida</mat-error>
+          </mat-form-field>
+
+          <mat-form-field border="1px" class="documento">
+            <mat-label>Documento</mat-label>
+            <input id="documento" matInput placeholder="Número de documento" formControlName="document"
+              maxlength="20" required />
+            <mat-error *ngIf="getValue('document')?.errors?.pattern">Solo se aceptan números</mat-error>
+            <mat-error *ngIf="getValue('document')?.errors?.required">Número de documento requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field class="email">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico" formControlName="email" maxlength="120" required />
+            <mat-error *ngIf="getValue('email')?.errors?.required">Email requerido</mat-error>
+            <mat-error *ngIf="getValue('email')?.errors?.email">Escriba un email válido</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div *ngIf="inData === null">
+          <mat-form-field class="w-max">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              maxlength="50"
+              required
+              type="password"
+            />
+            <mat-error *ngIf="getValue('password')?.errors?.required"
+              >Escriba una contraseña</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <br>
+        <mat-form-field class="w-max">
+          <mat-label>Nombre de usuario</mat-label>
+          <input matInput placeholder="Username" formControlName="username" maxlength="20" required />
+          <mat-error *ngIf="getValue('username')?.errors?.required">Escriba un nombre de usuario</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field border="1px" class="documento w-max">
+          <mat-label>Dirección de recidencia</mat-label>
+          <input id="address" matInput placeholder="Número de documento" formControlName="address"
+            maxlength="20" required />
+          <mat-error *ngIf="getValue('address')?.errors?.pattern">Solo se aceptan números</mat-error>
+          <mat-error *ngIf="getValue('address')?.errors?.required">Número de documento requerido</mat-error>
+        </mat-form-field>
+      </mat-dialog-content>
+
+      <mat-form-field id="rol">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="role" required>
+          <mat-option *ngFor="let item of listRoles" [value]="item">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="getValue('role')?.errors?.required">Selección requerida</mat-error>
+      </mat-form-field>
+
+      <mat-dialog-actions align="center">
+        <div class="example-button-container">
+          <button type="submit" mat-mini-fab aria-label="Example icon button with a menu icon" matTooltip="Guardar"
+            matTooltipPosition="above">
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </mat-dialog-actions>
+
+    </form>
+  </div>
+</div>

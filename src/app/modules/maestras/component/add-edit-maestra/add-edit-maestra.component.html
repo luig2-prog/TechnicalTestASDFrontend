@@ -1,0 +1,50 @@
+<button class="close" mat-dialog-close matTooltip="Cerrar" mat-icon-button matTooltipPosition="left">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2>{{title}}</h2>
+  
+  <form [formGroup]="dataMaestrasForm" (ngSubmit)="saveUpdate(dataMaestrasForm.value)" id="formulario">
+    <div id="caja">
+
+      <mat-form-field appearance="outline" id="documento1">
+        <mat-label>Análisis</mat-label>
+        <mat-select required formControlName="dsmaestro">
+          <mat-option [value]="item.nmmaestro" *ngFor="let item of listMaestra" 
+          (click)="getParametrosByAnalisis(item.dsmaestro)">
+            {{ item.dsmaestro }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="getValue('dsmaestro')?.errors?.required">Seleccione el análisis</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" id="documento1">
+        <mat-label>Parámetros por análisis</mat-label>
+        <mat-select formControlName="nmmaestro" required>
+          <mat-option [value]="item.nmmaestro" *ngFor="let item of listParametro" [value]="item.nmmaestro">
+            {{ item.tipomaestra }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="getValue('nmmaestro')?.errors?.required">Seleccione la maestra</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field id="documento2" appearance="outline">
+        <mat-label> Código </mat-label>
+        <input matInput formControlName="cddato" maxlength="20" required />
+        <mat-error *ngIf="getValue('cddato')?.errors?.required">Código requerido</mat-error>
+      </mat-form-field>
+      <input hidden formControlName="nmdato">
+  
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Nombre </mat-label>
+        <input matInput formControlName="dsdato" maxlength="200" required />
+        <mat-error *ngIf="getValue('dsdato')?.errors?.required">Nombre requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-dialog-actions align="center">
+      <button [disabled]="dataMaestrasForm.invalid" type="submit" mat-mini-fab color="primary"
+        aria-label="Example icon button with a menu icon">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-dialog-actions>
+  </form>
+  

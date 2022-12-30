@@ -1,0 +1,112 @@
+<button class="close" mat-dialog-close mat-icon-button matTooltip="Cerrar" matTooltipPosition="left">
+  <mat-icon>close</mat-icon>
+</button>
+<div class="container">
+  <div class="hijo">
+    <h2>{{(inData===null)?'AGREGAR ACTIVO':'ACTUALIZAR ACTIVO'}}</h2>
+    <br>
+    <form [formGroup]="formMuestra">
+      <mat-dialog-content class="mat-typography">
+        <div class="row">
+
+          <mat-form-field>
+            <mat-label>Fecha de compra</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateBuy" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Serial</mat-label>
+            <input matInput formControlName="assetSerial" required />
+          </mat-form-field>
+
+        </div>
+        <mat-form-field class="w-max">
+          <mat-label>Valor de compra</mat-label>
+          <input matInput formControlName="buyValue" required />
+        </mat-form-field>
+
+        <div class="row">
+          <mat-form-field class="column3">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="assetName" required />
+          </mat-form-field>
+          <mat-form-field class="column3">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="description" required />
+          </mat-form-field>
+        </div>
+
+        <section class="example-section" [formGroup]="toppings">
+          <h4>El activo pertenece a:</h4>
+          <mat-error *ngIf="!toppings.value.pepperoni && !toppings.value.extracheese">
+            Debe seleccionar por lo menos una persona o un area
+          </mat-error>
+          <br>
+          <p><mat-checkbox [checked]=true formControlName="pepperoni">Persona</mat-checkbox></p>
+          <p><mat-checkbox formControlName="extracheese">Area</mat-checkbox></p>
+        </section>
+
+        <div class="row">
+          <mat-form-field class="full-width ml-1.5" *ngIf="toppings.value.pepperoni">
+            <mat-label>
+              <mat-icon>person</mat-icon>Usuario
+            </mat-label>
+            <input matInput formControlName="user_name" maxlength="200" [matAutocomplete]="auto" />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of userList" [value]="item.username">
+                {{item.username }} - {{ item.firstName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field class="full-width ml-1.5" *ngIf="toppings.value.extracheese">
+            <mat-label>Arear</mat-label>
+            <mat-select formControlName="area">
+              <mat-option *ngFor="let item of areaList" [value]="item">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="column3">
+            <mat-label>
+              <mat-icon>place</mat-icon>Numero de inventario
+            </mat-label>
+            <input matInput formControlName="inventoryNumber" maxlength="200" required />
+          </mat-form-field>
+
+          <mat-form-field class="column3">
+            <mat-label>
+              <mat-icon>science</mat-icon>Peso
+            </mat-label>
+            <input matInput formControlName="weight" type="number" required />
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="column3">
+            <mat-label>
+              <mat-icon>place</mat-icon>Alto
+            </mat-label>
+            <input matInput formControlName="height" maxlength="200" required />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ancho</mat-label>
+            <input matInput formControlName="assetWith" required />
+          </mat-form-field>
+        </div>
+      </mat-dialog-content>
+
+      <mat-dialog-actions align="center">
+        <button (click)="saveOrUpdate()" mat-mini-fab matTooltip="{{(inData == null)?'Guardar':'Actualizar'}}">
+          <mat-icon>save</mat-icon>
+        </button>
+      </mat-dialog-actions>
+
+    </form>
+  </div>
+</div>

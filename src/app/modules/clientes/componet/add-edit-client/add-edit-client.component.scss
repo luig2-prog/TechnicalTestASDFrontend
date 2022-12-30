@@ -1,0 +1,53 @@
+.mat-form-field{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .containerI .mat-form-field + .mat-form-field {
+      margin-left: 8px;
+    }
+  .fullContainer{
+      width: 100%;
+  }
+  .example-button-container{
+    margin: 0 auto;
+  }
+  input[type=number]::-webkit-outer-spin-button,
+  
+  input[type=number]::-webkit-inner-spin-button {
+  
+      -webkit-appearance: none;
+  
+      margin: 0;
+  }
+  .close{
+    float: right;
+  }
+  .documento{
+    width: 97.5%;
+  }
+  #documento1{
+    width: 29%;
+  }
+  #container{
+    display: flex;
+    align-items: center;
+  }
+  h2{
+    text-align: center;
+    margin-left: 40px;
+  }
+  
+  #numerocuenta{
+    width: 97%;
+  }
+  
+  #scroll{
+    overflow: auto;
+  }
+  .full-width{
+    width: 97.5%;
+  }
+  .example-container{
+    display: flex;
+    justify-content: space-between;
+  }

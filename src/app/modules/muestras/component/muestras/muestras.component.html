@@ -1,0 +1,211 @@
+<section>
+<br>
+<div  class="accordion">
+
+    <form [formGroup]="formConsulta">
+    <mat-accordion  class="headers-align" multi>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h2>Parámetros de consulta</h2>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div>
+            <div class="row" >
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de la toma desde</mat-label>
+                    <input matInput [matDatepicker]="pickerDesde" formControlName="fedesdetoma">
+                    <mat-datepicker-toggle matSuffix [for]="pickerDesde"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDesde></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Fecha de la toma hasta</mat-label>
+                    <input matInput [matDatepicker]="pickerHasta" formControlName="fehastatoma">
+                    <mat-datepicker-toggle matSuffix [for]="pickerHasta"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerHasta></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tipo de muestra</mat-label>
+                    <mat-select formControlName="cdtipomuestra">
+                      <mat-option>Seleccionar</mat-option>
+                      <mat-option *ngFor="let item of ListaTipoMuestra" [value]="item.nmdato">
+                        {{item.dsdato}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tomador por</mat-label>
+                    <mat-select formControlName="cdtomadapor">
+                      <mat-option>Seleccionar</mat-option>
+                      <mat-option *ngFor="let item of ListaTomadoPor" [value]="item.nmdato">
+                        {{item.dsdato}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+            </div>
+
+            <div class="rowI">
+                <mat-form-field appearance="outline">
+                    <mat-label>Código de la muestra</mat-label>
+                    <input matInput formControlName="assetSerial">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Estado de la muestra</mat-label>
+                    <mat-select formControlName="cdestado">
+                      <mat-option>Seleccionar</mat-option>
+                      <mat-option *ngFor="let item of ListaEstados" [value]="item.nmdato">
+                        {{item.dsdato}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tipo de recipiente</mat-label>
+                    <mat-select formControlName="cdtiporecipiente">
+                      <mat-option>Seleccionar</mat-option>
+                      <mat-option *ngFor="let item of ListaTipoRecipiente" [value]="item.nmdato">
+                        {{item.dsdato}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Preservación</mat-label>
+                    <mat-select formControlName="cdpreservacion">
+                      <mat-option>Seleccionar</mat-option>
+                      <mat-option *ngFor="let item of ListaPreservacion" [value]="item.nmdato">
+                        {{item.dsdato}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button mat-raised-button color="warn" id="limpiar" (click)="limpiarFiltros()">Limpiar</button>
+                  <button mat-raised-button type="submit" (click)="consultaByParameter()" id="consultar">Consultar</button>
+            </div>
+          </div>
+      
+        </mat-expansion-panel>
+      </mat-accordion>
+    </form>
+
+</div>
+
+<div class="toolbar-container">
+  <header>
+    <div style="width: 40%;">
+    <span style="background-color: #e2e8f0; margin-right: 2%; width: 8%;">Pendiente por radicar</span>
+    <span style="background-color: rgb(252 211 77 / 65%); margin-right: 2%">En custodia</span>
+    <span style="background-color: #d9f99d; margin-right: 2%">Terminada</span>
+    
+    </div>
+          <button mat-raised-button *ngIf="isDirector" (click)="openDialogAdd()" class="addButton" matTooltip="Agregar activo"
+                matTooltipPosition="left">
+                Agregar activo
+              </button>
+        </header>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" aria-describedby="Tabla que lista las muestras">
+
+            <!-- codigo Column -->
+            <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef>SERIAL </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.assetSerial}}</td>
+            </ng-container>
+            <!-- fechaToma Column -->
+            <ng-container matColumnDef="fechaToma">
+                <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.assetName }}</td>
+            </ng-container>
+            <!-- tipoMuestra Column -->
+            <ng-container matColumnDef="tipoMuestra">
+                <th mat-header-cell *matHeaderCellDef>DESCRIPCIÓN </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.description}}</td>
+            </ng-container>
+            <!-- preservacion Column -->
+            <ng-container matColumnDef="preservacion">
+                <th mat-header-cell *matHeaderCellDef>TIPO </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.assetType}}</td>
+            </ng-container>
+            <!-- tipoRecipiente Column -->
+            <ng-container matColumnDef="tipoRecipiente">
+                <th mat-header-cell *matHeaderCellDef>NUMERO DE INVENTARIO </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.inventoryNumber}}</td>
+            </ng-container>
+            <!-- puntoRecoleccion Column -->
+            <ng-container matColumnDef="puntoRecoleccion">
+                <th mat-header-cell *matHeaderCellDef>PESO </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.weight}} KG</td>
+            </ng-container>
+            <!-- tomadoPor Column -->
+            <ng-container matColumnDef="tomadoPor">
+                <th mat-header-cell *matHeaderCellDef>ALTO </th>
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.height}}</td>
+            </ng-container>
+              <!-- cliente Column -->
+              <ng-container matColumnDef="cliente">
+                  <th mat-header-cell *matHeaderCellDef>ANCHO </th>
+                  <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.assetWith}}</td>
+              </ng-container>
+              <!-- cliente Column -->
+              <ng-container matColumnDef="buyValue">
+                  <th mat-header-cell *matHeaderCellDef>VALOR DE COMPRA </th>
+                  <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.buyValue}}</td>
+              </ng-container>
+              <ng-container matColumnDef="dateBuy">
+                  <th mat-header-cell *matHeaderCellDef>FECHA DE COMPRA </th>
+                  <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.dateBuy | date }} </td>
+              </ng-container>
+              <ng-container matColumnDef="user">
+                  <th mat-header-cell *matHeaderCellDef>PERSONA ASIGNADA </th>
+                  <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.user}}</td>
+              </ng-container>
+              <ng-container matColumnDef="area">
+                  <th mat-header-cell *matHeaderCellDef>AREA ASIGNADA </th>
+                  <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':colors(element.cdestado)}">{{element.area}}</td>
+              </ng-container>
+
+            <!-- detalles Column -->
+            <ng-container matColumnDef="detalles">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> ACCIONES </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;" [ngStyle]="{'background-color':colors(element.cdestado)}">
+                    <!-- <button mat-icon-button matTooltip="Radicación" (click)="openRadicacion(element)">
+                        <mat-icon>query_stats</mat-icon>
+                      </button> -->
+
+                      <button mat-icon-button matTooltip="Editar" *ngIf="isDirector" (click)="updateMuestra(element)">
+                        <mat-icon >edit</mat-icon>
+                      </button>
+
+                      <button mat-icon-button matTooltip="Eliminar" *ngIf="isDirector" color="warn" (click)="deleteMuestra(element.cdunimuestra)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+
+                      <button mat-icon-button matTooltip="Descargar reporte" color="primary" (click)="generarReporteMuestra(element.cdunimuestra)">
+                        <mat-icon>download</mat-icon>
+                      </button>
+                      
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Use los filtro de busqueda para consultar la muestra deseada</td>
+      </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+
+</div>
+</section>

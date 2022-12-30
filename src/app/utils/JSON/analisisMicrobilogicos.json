@@ -1,0 +1,10 @@
+{
+    "ph": {
+        "id": 1,
+        "titulo": "ALCALINIDAD TOTAL",
+        "procedimiento": "PLA-006",
+        "metodo": "SM 4500-H+ B",
+        "unidades": "pH",
+        "tipo":"Ph"
+    }  
+}

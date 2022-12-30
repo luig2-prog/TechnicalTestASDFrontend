@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; 
+
+        font-family: Poppins,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+}
+
+.mat-table {
+        font-family: Poppins,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif !important;
+}
+
+.w-max {
+        width: 97%;
+}

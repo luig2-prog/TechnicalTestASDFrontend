@@ -1,0 +1,63 @@
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+.row, .rowI{
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.row .mat-form-field{
+  width: 23%;
+}
+.rowI .mat-form-field, #consultar{
+  width: 18%;
+}
+
+.accordion{
+  width: 97%;
+  margin: auto;
+}
+th.mat-header-cell{
+    background-color: #0E314F;
+}
+.mat-header-cell{
+    color: white;
+}
+header{
+    padding: 0 24px 16px;
+    margin: auto;
+    padding-top: 2%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.mat-elevation-z8{
+    margin: auto;
+    width: 97%;
+}
+table {
+    width: 100%;
+  }
+  
+.addButton{
+    width: 15%;
+    background-color: #0012BC;
+    color: white;
+    height: min-content;
+}
+
+#consultar{
+  width: 7.5%;
+  background-color: #0012BC;
+  color: white;
+  height: min-content;
+}
+#limpiar{
+  width: 7.5%;
+  height: min-content;
+}

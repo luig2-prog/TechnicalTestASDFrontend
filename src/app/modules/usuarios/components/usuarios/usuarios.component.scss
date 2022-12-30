@@ -1,0 +1,87 @@
+table {
+  width: 100%;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #25c41f65;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #27c34a;
+}
+
+
+#container2 {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#container1 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+th.mat-header-cell {
+  background-color: #0E314F;
+}
+
+.mat-header-cell {
+  color: white;
+}
+
+#agregar {
+  background-color: #0012BC;
+}
+
+#agregar:hover {
+  background-color: #0015d6;
+}
+
+.padre {
+  display: flex;
+}
+
+table {
+  width: 100%;
+}
+
+#padre {
+  width: 98%;
+}
+
+.mat-form-field-infix {
+  border-top: 0px;
+  margin: 0%;
+}
+
+h2 {
+  margin-bottom: 0px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.acciones {
+  width: 10%;
+}
+
+.th,
+.td {
+  width: 15%;
+}
+
+.correo {
+  width: 25%;
+}
+
+div p {
+  margin-top: 15px;
+}
+
+.accion {
+  margin-top: 4px;
+}

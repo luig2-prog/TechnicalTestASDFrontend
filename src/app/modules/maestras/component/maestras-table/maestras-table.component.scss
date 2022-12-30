@@ -1,0 +1,50 @@
+th.mat-header-cell{
+  background-color: #0E314F;
+}
+.mat-header-cell{
+  color: white;
+}
+.mat-form-field-appearance-standard .mat-form-field-flex {
+  padding-top: 0.75em;
+}
+.row{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.col{
+  width: 100%;
+  padding: 2% 1% 2% 1%;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.tableContainer{
+    width: 100%;
+    margin: auto;
+}
+table {
+    width: 100%;
+  }
+  
+  .filter {
+    width: 100%;
+  }
+  .padre{
+    display: flex;
+  }
+  td,th{
+    width: 33.33%;
+  }
+.mat-mini-fab.mat-accent {
+    background-color: #0012BC;
+}
+.mat-mini-fab.mat-accent:hover{
+   background-color: #114a1d;
+}
+.select{
+  width: 40%;
+}

@@ -1,0 +1,75 @@
+<button class="close" mat-dialog-close mat-icon-button matTooltip="Cerrar" matTooltipPosition="left">
+    <mat-icon>close</mat-icon>
+</button>
+<h2>{{ inData == null ? 'Agregar cliente': 'Modificar cliente' }}</h2>
+
+<form [formGroup]="formCliente" (ngSubmit)="saveUpdate()">
+    <mat-dialog-content class="mat-typography">
+        <br>
+        <div id="container">
+            <mat-form-field appearance="outline" id="documento1">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="cdtipodocumento">
+                    <mat-option *ngFor="let option of listTipoDocumento" [value]="option.nmdato">
+                        {{option.cddato}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="getValue('cdtipodocumento')?.errors?.required">Selección requerida</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" border="1px" class="documento">
+                <mat-label>Documento</mat-label>
+                <input id="documento" matInput placeholder="Número de documento" formControlName="cddocumento"
+                    maxlength="20" required />
+                <mat-error *ngIf="getValue('cddocumento')?.errors?.pattern">Solo se aceptan números</mat-error>
+                <mat-error *ngIf="getValue('cddocumento')?.errors?.required">Número de documento requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+       
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                placeholder="Nombre completo"
+                formControlName="dsnombreCompleto"
+                maxlength="20"
+                required
+              />
+              <mat-error *ngIf="getValue('dsnombreCompleto')?.errors?.required"
+                >Escriba un nombre</mat-error
+              >
+            </mat-form-field>
+
+          <div class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Teléfono</mat-label>
+                <input matInput placeholder="Teléfono" formControlName="cdtelefono" maxlength="20" required />
+                <mat-error *ngIf="getValue('cdtelefono')?.errors?.required">Teléfono requerido</mat-error>
+                <mat-error *ngIf="getValue('cdtelefono')?.errors?.pattern">Solo se aceptan números</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Dirección</mat-label>
+                <input matInput placeholder="Dirección" formControlName="dsdireccion" maxlength="100" required />
+                <mat-error *ngIf="getValue('dsdireccion')?.errors?.required">Escriba la dirección</mat-error>
+            </mat-form-field>
+        </div>
+
+                
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico" formControlName="dsemail" maxlength="120" required />
+            <mat-error *ngIf="getValue('dsemail')?.errors?.required">Email requerido</mat-error>
+            <mat-error *ngIf="getValue('dsemail')?.errors?.email">Escriba un email válido</mat-error>
+        </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button type="submit" mat-mini-fab color="primary" matTooltip="Guardar"
+            matTooltipPosition="above">
+            <mat-icon>save</mat-icon>
+        </button>
+    </mat-dialog-actions>
+
+</form>
