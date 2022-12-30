@@ -5,7 +5,7 @@ import { Jwt } from '../../modules/login/model/jwtInterface';
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
 import moment from 'moment';
-import { Usuario } from '../../interface/usuario';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +35,6 @@ export class AuthService {
   setCurrentUser(token: string, setPassword: boolean) {
     
     token = token.replace('Bearer ','');
-    // this.localStorage.setItem("token", token);
     localStorage.setItem("token", token);
     const decodedToken = jwt_decode(token);
     const decodedData = JSON.parse(decodedToken['sub']);

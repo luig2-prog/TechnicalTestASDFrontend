@@ -10,86 +10,28 @@
                 <h2>Parámetros de consulta</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
-
-          <div>
-            <div class="row" >
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Fecha de la toma desde</mat-label>
-                    <input matInput [matDatepicker]="pickerDesde" formControlName="fedesdetoma">
-                    <mat-datepicker-toggle matSuffix [for]="pickerDesde"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerDesde></mat-datepicker>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Fecha de la toma hasta</mat-label>
-                    <input matInput [matDatepicker]="pickerHasta" formControlName="fehastatoma">
-                    <mat-datepicker-toggle matSuffix [for]="pickerHasta"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerHasta></mat-datepicker>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Tipo de muestra</mat-label>
-                    <mat-select formControlName="cdtipomuestra">
-                      <mat-option>Seleccionar</mat-option>
-                      <mat-option *ngFor="let item of ListaTipoMuestra" [value]="item.nmdato">
-                        {{item.dsdato}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Tomador por</mat-label>
-                    <mat-select formControlName="cdtomadapor">
-                      <mat-option>Seleccionar</mat-option>
-                      <mat-option *ngFor="let item of ListaTomadoPor" [value]="item.nmdato">
-                        {{item.dsdato}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
+          <div class="container-flex-father">
+            <div class="flex container-flex">
+              <mat-form-field appearance="outline" class="basis-1/4 md:basis-1/3">
+                <mat-label>Fecha de compra</mat-label>
+                <input matInput [matDatepicker]="pickerDesde" formControlName="dateBuy">
+                <mat-datepicker-toggle matSuffix [for]="pickerDesde"></mat-datepicker-toggle>
+                <mat-datepicker #pickerDesde></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="basis-1/4 md:basis-1/3">
+                <mat-label>Serial</mat-label>
+                <input matInput formControlName="assetSerial">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="basis-1/4 md:basis-1/3">
+                <mat-label>Tipo</mat-label>
+                <input matInput formControlName="assetType">
+              </mat-form-field>
             </div>
-
-            <div class="rowI">
-                <mat-form-field appearance="outline">
-                    <mat-label>Código de la muestra</mat-label>
-                    <input matInput formControlName="assetSerial">
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Estado de la muestra</mat-label>
-                    <mat-select formControlName="cdestado">
-                      <mat-option>Seleccionar</mat-option>
-                      <mat-option *ngFor="let item of ListaEstados" [value]="item.nmdato">
-                        {{item.dsdato}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Tipo de recipiente</mat-label>
-                    <mat-select formControlName="cdtiporecipiente">
-                      <mat-option>Seleccionar</mat-option>
-                      <mat-option *ngFor="let item of ListaTipoRecipiente" [value]="item.nmdato">
-                        {{item.dsdato}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Preservación</mat-label>
-                    <mat-select formControlName="cdpreservacion">
-                      <mat-option>Seleccionar</mat-option>
-                      <mat-option *ngFor="let item of ListaPreservacion" [value]="item.nmdato">
-                        {{item.dsdato}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <button mat-raised-button color="warn" id="limpiar" (click)="limpiarFiltros()">Limpiar</button>
-                  <button mat-raised-button type="submit" (click)="consultaByParameter()" id="consultar">Consultar</button>
-            </div>
+            <div class="container-button-flex">
+              <button mat-raised-button class="w-50" color="warn" id="limpiar" (click)="limpiarFiltros()">Limpiar</button>
+              <button mat-raised-button class="w-50" type="submit" (click)="consultaByParameter()" id="consultar">Consultar</button>
+            </div>  
           </div>
-      
         </mat-expansion-panel>
       </mat-accordion>
     </form>

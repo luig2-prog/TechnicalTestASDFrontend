@@ -87,21 +87,22 @@ export class UsuariosComponent implements OnInit {
   }
 
   changedStatus(usuario: Usuario, slide: any) {
-    this.utilService.confirmacion('¿Deseas cambiar el estado de este cliente?')
-      .then((respuesta) => {
-        if (respuesta.isConfirmed) {
-          usuario.cdestado = usuario.cdestado === "I" ? "A" : "I";
-          this.service.changedStatus(usuario).subscribe((data: any) => {
-            Swal.fire(data.message, '', 'success');
-            this.getAll();
-          }, error => {
-            Swal.fire('ERROR', 'Error al cambiar de estado', "error")
-          });
-        } else {
-          slide.checked = (usuario.cdestado === 'A') ? true : false;
-        }
-      })
+  //   this.utilService.confirmacion('¿Deseas cambiar el estado de este cliente?')
+  //     .then((respuesta) => {
+  //       if (respuesta.isConfirmed) {
+  //         usuario.cdestado = usuario.cdestado === "I" ? "A" : "I";
+  //         this.service.changedStatus(usuario).subscribe((data: any) => {
+  //           Swal.fire(data.message, '', 'success');
+  //           this.getAll();
+  //         }, error => {
+  //           Swal.fire('ERROR', 'Error al cambiar de estado', "error")
+  //         });
+  //       } else {
+  //         slide.checked = (usuario.cdestado === 'A') ? true : false;
+  //       }
+  //     })
   }
+
   deleteUser(nmid:string){
     this.sweeAlert
     .confirmacion(`¿Deseas eliminar este usuario?`)

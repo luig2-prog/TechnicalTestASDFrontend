@@ -1,11 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MailService } from 'src/app/services/mail/mail.service';
 import { RolService } from 'src/app/services/rol/rol.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { SweetAlert } from 'src/app/utils/sweetAlert.service';
-import { Mail } from '../../../../interface/mail';
 import Swal from 'sweetalert2';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
@@ -20,7 +18,6 @@ export class AddEditComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI | any;
 
   tituloForm: string = '';
-  userToMail: Mail;
   listRoles: any[] = [];
   listTipoDocumento: [
     {
@@ -54,7 +51,6 @@ export class AddEditComponent implements OnInit {
     private utilService: SweetAlert,
     private serviceRol: RolService,
     private dialogRef: MatDialogRef<AddEditComponent>,
-    private mailService: MailService,
     @Inject(MAT_DIALOG_DATA) public inData: any
   ) {
     console.log("DATAAA", inData);
@@ -131,19 +127,4 @@ export class AddEditComponent implements OnInit {
     });
   }
 
-  sendMailUserRegistrer(username: string, email: string) {
-    const data = {
-      cduniusuario: username,
-      email: email
-    };
-
-    this.mailService.sendMailUserRegistrer(data).subscribe(response => {
-      if (response.status !== 200) {
-        Swal.fire({
-          icon: 'warning',
-          text: `No se pudo enviar el correo de verificación al usuario ${username}, con correo: ${email}`
-        });
-      };
-    });
-  }
 }

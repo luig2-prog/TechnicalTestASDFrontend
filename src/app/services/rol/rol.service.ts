@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RestResponse } from 'src/app/interface/RestResponse';
 import { environment } from 'src/environments/environment';
-import { Rol } from '../../interface/rol';
+import { Role } from '../../interface/Role';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +18,20 @@ export class RolService {
     return this.http.get(`${this.url}/v1/role`);
   }
 
-  getById(id : number) : Observable<Rol>{
-    return this.http.get<Rol>(`${this.url}/role/${id}`);
+  getById(id : number) : Observable<RestResponse>{
+    return this.http.get<RestResponse>(`${this.url}/role/${id}`);
   }
 
-  updateRolEstado(rol : Rol) : Observable<Rol>{
-    return this.http.put<Rol>(`${this.url}/role/estado`, rol)
+  updateRolEstado(rol : Role) : Observable<RestResponse>{
+    return this.http.put<RestResponse>(`${this.url}/role/estado`, rol);
   }
 
-  saveData(rol : Rol) : Observable<Rol>{
-    return this.http.post<Rol>(`${this.url}/role`, rol);
+  saveData(rol : Role) : Observable<RestResponse>{
+    return this.http.post<RestResponse>(`${this.url}/role`, rol);
   }
 
-  updateData(rol : Rol) : Observable<Rol>{
-    return this.http.put<Rol>(`${this.url}/role`, rol)
+  updateData(rol : Role) : Observable<RestResponse>{
+    return this.http.put<RestResponse>(`${this.url}/role`, rol);
   }
 
 }

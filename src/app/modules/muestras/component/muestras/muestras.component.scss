@@ -15,7 +15,7 @@
   width: 23%;
 }
 .rowI .mat-form-field, #consultar{
-  width: 18%;
+  // width: 18%;
 }
 
 .accordion{
@@ -52,13 +52,13 @@ table {
 }
 
 #consultar{
-  width: 7.5%;
+  // width: 7.5%;
   background-color: #0012BC;
   color: white;
   height: min-content;
 }
 #limpiar{
-  width: 7.5%;
+  // width: 7.5%;
   height: min-content;
 }
 
@@ -67,4 +67,29 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   text-align: center;
+}
+
+.container-flex-father {
+  
+  display: flex;
+  justify-content: center;
+
+}
+.container-flex {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  flex-direction: column;
+}
+
+.container-button-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 40%;
+  align-items: center;
+}
+
+.w-50 {
+  width: 50%;
 }
