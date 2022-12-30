@@ -26,8 +26,8 @@ export class FixedAssetComponent implements OnInit {
   ELEMENT_DATA: FixedAsset[] = [];
 
   displayedColumns: string[] = [
-    'codigo', 'fechaToma', 'tipoMuestra', 'preservacion', 'tipoRecipiente', 'puntoRecoleccion', 
-    'tomadoPor', 'cliente', 'buyValue','dateBuy','user', 'area','detalles'
+    'codigo', 'fechaToma', 'tipoMuestra', 'preservacion', 'tipoRecipiente', 'puntoRecoleccion',
+    'tomadoPor', 'cliente', 'buyValue', 'dateBuy', 'user', 'area', 'detalles'
   ];
   dataSource = new MatTableDataSource<any>();
   rol: any;
@@ -52,11 +52,10 @@ export class FixedAssetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listarMaestras();
-
+    this.getAllData();
   }
 
-  listarMaestras() {
+  getAllData() {
     this.blockUI.start('Cargando...');
     this.fixedAssetService.list().subscribe((response: any) => {
       this.fixedAssets = response.data;
@@ -64,18 +63,16 @@ export class FixedAssetComponent implements OnInit {
       this.dataSource = new MatTableDataSource<FixedAsset>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
       this.blockUI.stop();
-    }, (response) => {
+    }, response => {
       Swal.fire('Info', response.error.message, 'warning');
       this.blockUI.stop();
     }
     );
   }
 
-  async consultaByParameter() {
-
+  async getByParameter() {
     this.blockUI.start('Cargando...');
     this.fixedAssetService.getByTypeDateOrSerial(this.formConsulta.getRawValue()).subscribe(data => {
-
       if (data.status == 200) {
         if (data.data.length == 0) {
           if (!this.eliminando) {
@@ -101,8 +98,7 @@ export class FixedAssetComponent implements OnInit {
 
   updateMuestra(fixedAsset: any) {
     console.log("🚀 ~ file: muestras.component.ts:145 ~ MuestrasComponent ~ updateMuestra ~ fixedAsset", fixedAsset)
-    
-    if(fixedAsset.user !== null) {
+    if (fixedAsset.user !== null) {
       fixedAsset.user_name = fixedAsset.user.username;
     }
     const dialogref = this.dialog.open(AddEditMuestraComponent, {
@@ -112,31 +108,9 @@ export class FixedAssetComponent implements OnInit {
     })
     dialogref.afterClosed().subscribe((res) => {
       if (res) {
-        this.consultaByParameter();
+        this.getByParameter();
       }
     })
-  }
-
-  deleteMuestra(cdunimuestra: string) {
-
-    this.sweeAlert
-      .confirmacion(`¿Deseas eliminar esta muestra?`)
-      .then((respuesta) => {
-        if (respuesta.isConfirmed) {
-          this.blockUI.start('Eliminando...');
-          // this.muestraService.deleteMuestra(cdunimuestra).subscribe((rta: any) => {
-          //   this.eliminando = true;
-          //   Swal.fire(rta.message, '', 'success');
-          //   this.consultaByParameter();
-          //   this.blockUI.stop();
-          // }, (error) => {
-          //   this.blockUI.stop();
-          //   Swal.fire('ERROR', 'Error al eliminar la muestra', 'error');
-          // });
-        } else if (respuesta.isDenied) {
-          Swal.fire('Cancelado', '', 'info');
-        }
-      });
   }
 
   openDialogAdd() {
@@ -148,7 +122,7 @@ export class FixedAssetComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.formConsulta.get('assetSerial').setValue(res.assetSerial)
-        this.consultaByParameter();
+        // this.getByParameter();
       }
     });
   }
@@ -164,39 +138,11 @@ export class FixedAssetComponent implements OnInit {
     return bytes;
   }
 
-  generarReporteMuestra(cdunimuestra: string) {
-    this.blockUI.start('Generando reporte...');
-    // this.muestraService.generarReporteMuestra(cdunimuestra).subscribe(
-    //   (rta: any) => {
-    //     if (rta.status == 0) {
-    //       const array = this.base64ToArrayBuffer(rta.data);
-    //       const blob = new Blob([array], { type: 'application/octet-stream' });
-    //       this.blockUI.stop();
-    //     } else {
-    //       this.blockUI.stop();
-    //       Swal.fire('ERROR', 'Ha ocurrido un error', 'error');
-    //     }
-
-    //   },
-    //   (error) => {
-    //     this.blockUI.stop();
-    //     Swal.fire('ERROR', 'Falló la generación del reporte', 'error');
-    //   }
-    // );
-  }
-
-
   limpiarFiltros() {
     this.formConsulta.patchValue({
       dateBuy: '',
-      fehastatoma: '',
       assetSerial: '',
-      cdtipomuestra: '',
       assetType: '',
-      cdpreservacion: '',
-      cdtomadapor: '',
-      cdestado: '',
-      dstomadapor: '',
     });
   }
   colors(cdestado: any): any {
